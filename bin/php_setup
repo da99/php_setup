@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+# -*- bash -*-
+#
+#
+set -u -e -o pipefail
+
+case "$1" in
+
+  "example")
+    echo "  ================================  "
+    echo "   php_setup install php-5.1.1"
+    echo "  ================================  "
+    ;;
+
+  "install")
+    # cd /tmp
+    # file="$2"
+    # if [[ -d "$2" ]]; then
+      # echo "Already downloaded: $file"
+    # else
+      # wget http://us1.php.net/get/${file}.tar.gz/from/this/mirror -O "${file}.tar.gz"
+      # tar zxf "${file}.tar.gz"
+    # fi
+
+    # mkdir -p /progs/php
+    # cd "$file"
+    # ./configure --prefix=/progs/php/$file --enable-fpm --with-mysql --with-pgsql
+    set -x
+    sudo apt-get install php5-common php5-cli php5-fpm php5-pgsql
+    ;;
+
+  *)
+    echo "Unknown operation: $1" 1>&2
+    exit 1
+    ;;
+esac
+
+
+
